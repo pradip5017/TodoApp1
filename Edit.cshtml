@@ -1,0 +1,42 @@
+﻿@model TodoApp.Models.Todo
+<style>
+    table {
+        width: 80%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    a {
+        margin-right: 10px;
+    }
+
+    form label {
+        display: inline-block;
+        width: 100px;
+    }
+
+    input[type="text"] {
+        width: 300px;
+    }
+
+    button {
+        margin-top: 10px;
+    }
+</style>
+<h2>Edit Todo</h2>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <label>Title</label><input asp-for="Title" /><br />
+    <label>Description</label><input asp-for="Description" /><br />
+    <label>Is Completed</label><input asp-for="IsCompleted" type="checkbox" /><br />
+    <button type="submit">Update</button>
+</form>

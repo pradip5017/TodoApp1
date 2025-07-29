@@ -1,0 +1,96 @@
+﻿@model IEnumerable<TodoApp.Models.Todo>
+
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 40px;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    .add-button {
+        display: inline-block;
+        background-color: #28a745;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-bottom: 20px;
+    }
+
+        .add-button:hover {
+            background-color: #218838;
+        }
+
+    table {
+        width: 90%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table, th, td {
+        border: 1px solid #dee2e6;
+    }
+
+    th {
+        background-color: #343a40;
+        color: white;
+        padding: 12px;
+        text-align: left;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #e9ecef;
+    }
+
+    .action-links a {
+        background-color: #007bff;
+        color: white;
+        padding: 5px 10px;
+        margin-right: 6px;
+        text-decoration: none;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+
+        .action-links a:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<h2>Todo List</h2>
+
+<a asp-action="Create" class="add-button">+ Add Todo</a>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Completed</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Description</td>
+            <td>@(item.IsCompleted ? "Yes" : "No")</td>
+            <td class="action-links">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
